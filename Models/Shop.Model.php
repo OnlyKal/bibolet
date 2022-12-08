@@ -20,6 +20,12 @@ class ShopModel extends Queries
         );
     }
 
+    public function  getMyShop($shopId)
+    {
+        $query = Queries::myQuery('SELECT * FROM tshop WHERE tshop.shopId=?;', [$shopId]);
+        return $query;
+    }
+
     public function  getAllShop()
     {
         $query = Queries::myQuery('SELECT * FROM tshop WHERE tshop.isSuspended=?;', [1]);

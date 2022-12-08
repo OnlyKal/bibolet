@@ -34,7 +34,7 @@ CREATE TABLE
         prodPrice varchar(50) NOT NULL,
         prodOfferPrice varchar(50),
         isOffer TINYINT(1) NOT NULL DEFAULT 0,
-        isValid TINYINT(1) NOT NULL DEFAULT 0,
+        isValid TINYINT(1) NOT NULL DEFAULT 1,
         productImages varchar(50),
         productComment TEXT,
         FOREIGN KEY (catId) REFERENCES tCategory(catId)
@@ -44,6 +44,7 @@ CREATE TABLE
     tCommand(
         cmdId varchar(50) NOT NULL PRIMARY KEY,
         prodId varchar(50) NOT NULL,
+        shopId varchar(50) NOT NULL,
         cmdQuantity varchar(50) NOT NULL,
         cmdTotalPrice varchar(50) NOT NULL,
         cmdDate datetime NOT NULL default CURRENT_TIMESTAMP,
