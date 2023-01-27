@@ -16,7 +16,7 @@ CREATE TABLE
         shopLng varchar(50) NULL,
         isSeller TINYINT(1) NOT NULL DEFAULT 0,
         shopImageCover varchar(50) NULL,
-        isSuspended TINYINT(1) NOT NULL DEFAULT 0,
+        isSuspended TINYINT(1) NOT NULL DEFAULT 0
     );
 
 CREATE TABLE
@@ -29,6 +29,7 @@ CREATE TABLE
     tProduct(
         prodId varchar(50) NOT NULL PRIMARY KEY,
         catId VARCHAR(50) not NULL,
+		shopId varchar(50) NOT NULL,
         prodName varchar(50) NOT NULL,
         prodmark varchar(50) NULL,
         prodPrice varchar(50) NOT NULL,
@@ -37,14 +38,14 @@ CREATE TABLE
         isValid TINYINT(1) NOT NULL DEFAULT 1,
         productImages varchar(50),
         productComment TEXT,
-        FOREIGN KEY (catId) REFERENCES tCategory(catId)
+        FOREIGN KEY (catId) REFERENCES tCategory(catId),
+		FOREIGN KEY (shopId) REFERENCES tShop(shopId)
     );
 
 CREATE TABLE
     tCommand(
         cmdId varchar(50) NOT NULL PRIMARY KEY,
         prodId varchar(50) NOT NULL,
-        shopId varchar(50) NOT NULL,
         cmdQuantity varchar(50) NOT NULL,
         cmdTotalPrice varchar(50) NOT NULL,
         cmdDate datetime NOT NULL default CURRENT_TIMESTAMP,
