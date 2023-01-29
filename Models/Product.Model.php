@@ -65,11 +65,7 @@ class ProductModel extends Queries
         $query = Queries::myQuery('SELECT * FROM tProduct WHERE tProduct.isValid=?;', [1]);
         return $query;
     }
-    public function  getAllProductsLike($pattern)
-    {
-        $query = Queries::myQuery('SELECT tshop.*,tproduct.* from tshop INNER JOIN tproduct ON tshop.shopId=tshop.prodId GROUP BY tshop.shopId WHERE tshop.shopOwner LIKE ' % $pattern % ' OR tshop.shopBrand LIKE ' % $pattern % ' OR tproduct.prodName=LIKE ' % $pattern % ' OR tproduct.prodmark LIKE ' % $pattern % ' AND tProduct.isValid=?;', [1]);
-        return $query;
-    }
+    
 
     public function  getAllProductsAdmin()
     {
@@ -77,10 +73,4 @@ class ProductModel extends Queries
         return $query;
     }
 
-
-    public function  getAllProductsAdminLike($pattern)
-    {
-        $query = Queries::myQuery('SELECT tshop.*,tproduct.* from tshop INNER JOIN tproduct ON tshop.shopId=tshop.prodId GROUP BY tshop.shopId WHERE tshop.shopOwner LIKE ' % $pattern % ' OR tshop.shopBrand LIKE ' % $pattern % ' OR tproduct.prodName=LIKE ' % $pattern % ' OR tproduct.prodmark LIKE ' % $pattern % '');
-        return $query;
-    }
 }
