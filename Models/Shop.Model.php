@@ -25,18 +25,19 @@ class ShopModel extends Queries
         $query = Queries::myQuery('SELECT * FROM tshop WHERE tshop.shopId=?;', [$shopId]);
         return $query;
     }
-
-    public function  getAllShop()
+    public function  getMyShopLogin($element,$password)
     {
-        $query = Queries::myQuery('SELECT * FROM tshop WHERE tshop.isSuspended=?;', [1]);
+        $query = Queries::myQuery('SELECT * FROM tshop WHERE tshop.shopEmail=? or tshop.shopPhone=? and tshop.shopPassword=?;', [$element,$element,$password]);
         return $query;
     }
+
+    
     public function  getAllShopAdmin()
     {
         $query = Queries::myQuery('SELECT * FROM tshop;');
         return $query;
     }
-    public function updateShopInfos(array $args)
+    public function updateShop(array $args)
     {
         Queries::updateData(
             Schema::SHOP['tb'],
