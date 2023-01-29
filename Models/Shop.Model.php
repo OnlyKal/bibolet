@@ -14,7 +14,8 @@ class ShopModel extends Queries
                 Schema::SHOP['owner'],
                 Schema::SHOP['phone'],
                 Schema::SHOP['email'],
-                Schema::SHOP['password'],
+                Schema::SHOP['brand']
+
             ],
             $args
         );
@@ -25,13 +26,12 @@ class ShopModel extends Queries
         $query = Queries::myQuery('SELECT * FROM tshop WHERE tshop.shopId=?;', [$shopId]);
         return $query;
     }
-    public function  getMyShopLogin($element,$password)
+    public function  getMyShopLogin($element, $password)
     {
-        $query = Queries::myQuery('SELECT * FROM tshop WHERE tshop.shopEmail=? or tshop.shopPhone=? and tshop.shopPassword=?;', [$element,$element,$password]);
+        $query = Queries::myQuery('SELECT * FROM tshop WHERE tshop.shopEmail=? or tshop.shopPhone=? and tshop.shopPassword=?;', [$element, $element, $password]);
         return $query;
     }
 
-    
     public function  getAllShopAdmin()
     {
         $query = Queries::myQuery('SELECT * FROM tshop;');
@@ -80,7 +80,8 @@ class ShopModel extends Queries
             Schema::SHOP['id'],
             $args
         );
-    }public function updateBrand(array $args)
+    }
+    public function updateBrand(array $args)
     {
         Queries::updateData(
             Schema::SHOP['tb'],

@@ -13,14 +13,16 @@ if (isset($_POST['action'])) {
             $shop_owner = htmlspecialchars($_POST['shop_owner']);
             $shop_phone = htmlspecialchars($_POST['shop_phone']);
             $shop_email = htmlspecialchars($_POST['shop_email']);
-            $shop_password = hash("sha256", $_POST['shop_password']);
+            $shop_brand = htmlspecialchars($_POST['shop_brand']);
+           
             $shopModel = new ShopModel();
             $shopModel->createShop([
                 $shop_id,
                 $shop_owner,
+                $shop_brand,
                 $shop_phone,
-                $shop_email,
-                $shop_password
+                $shop_email
+               
             ]);
         }
 
