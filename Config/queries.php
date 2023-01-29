@@ -1,6 +1,6 @@
 <?php
 
-include '../Config/config.php';
+include './Config/config.php';
 
 class Queries
 {

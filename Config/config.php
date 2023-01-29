@@ -8,7 +8,7 @@ class Database extends PDO
     private const HOST = "localhost";
     private const USER = "root";
     private const PASSWORD = "";
-    private const DB = "bibolet";
+    private const DB = "bibolex";
 
     public function __construct()
     {
