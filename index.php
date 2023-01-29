@@ -1,20 +1,20 @@
 <?php
 
 
-if (isset($_GET['jdsyudyvufdsyvvd'])) {
-    $mainRoute = $_GET['jdsyudyvufdsyvvd'];
+if (isset($_GET['bigbangtheories'])) {
+    $mainRoute = $_GET['bigbangtheories'];
 
     switch ($mainRoute) {
-        case 'STARYUEHDUIDODJDJDODODKDHDJJD':
-            include './Controllers/CategoryController.php';
+        case 'stargeteatalantissg1universoriginkalex0':
+            include './Controllers/Category.Controller.php';
             break;
-        case '7UIE873UYUERHJDFIUIUE489':
+        case 'stargeteatalantissg1universoriginkalex1':
             include './Controllers/Product.Controller.php';
             break;
-        case '784IUERHJHJDFHJDFUIDFIUIUDER':
+        case 'stargeteatalantissg1universoriginkalex2':
             include './Controllers/Shop.Controller.php';
             break;
-        case 'SUYDUY878734UIJDFHJDFJH':
+        case 'stargeteatalantissg1universoriginkalex':
             include './Controllers/Command.Controller.php';
             break;
         default:

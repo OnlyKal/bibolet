@@ -9,7 +9,6 @@ if (isset($_POST['action'])) {
     {
         static function addProduct()
         {
-            $shop_id = htmlspecialchars($_POST['shop_id']);
             $product_id = htmlspecialchars($_POST['product_id']);
             $product_name = htmlspecialchars($_POST['product_name']);
             $product_mark = htmlspecialchars($_POST['product_mark']);
@@ -17,18 +16,22 @@ if (isset($_POST['action'])) {
             $product_priceoff = htmlspecialchars($_POST['product_priceoff']);
             $product_img = htmlspecialchars($_POST['product_img']);
             $product_comment = htmlspecialchars($_POST['product_comment']);
-           
-            $shopModel = new ShopModel();
-            $shopModel->createShop([
-                $shop_id,
-                $product_id,
-                $product_name,
-                $product_mark,
-                $product_price,
-                $product_priceoff,
-                $product_img,
-                $product_comment
-            ]);
+
+            try {
+                $shopModel = new ShopModel();
+                $shopModel->createShop([
+
+                    $product_id,
+                    $product_name,
+                    $product_mark,
+                    $product_price,
+                    $product_priceoff,
+                    $product_img,
+                    $product_comment
+                ]);
+            } catch (\Throwable $th) {
+                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
+            }
         }
 
         static function getValidProducts()
@@ -43,7 +46,7 @@ if (isset($_POST['action'])) {
             $data = $productModel->getAllProductsAdmin()->fetchAll();
             echo json_encode(["status" => "success", "data" => $data]);
         }
-       
+
         static function updatePrice()
         {
             $productModel = new ProductModel();
@@ -124,11 +127,11 @@ if (isset($_POST['action'])) {
                 echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
             }
         }
-        
-    
+
+
         static function action()
         {
-            $action= htmlspecialchars($_POST['action']);
+            $action = htmlspecialchars($_POST['action']);
             switch ($action) {
                 case 'action-add-product':
                     ProductController::addProduct();

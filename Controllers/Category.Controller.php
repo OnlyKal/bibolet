@@ -13,7 +13,6 @@ if (isset($_POST['action'])) {
         static function addCategory()
         {
 
-
             $category_id = htmlspecialchars($_POST['category_id']);
             $category_name = htmlspecialchars($_POST['category_name']);
 
@@ -32,7 +31,6 @@ if (isset($_POST['action'])) {
         static function action()
         {
             $action = htmlspecialchars($_POST['action']);
-
             switch ($action) {
                 case 'action-add-category':
                     Category::addCategory();
