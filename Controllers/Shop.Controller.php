@@ -2,7 +2,7 @@
 
 
 if (isset($_POST['action'])) {
-    include('../Models/Shop.Model.php');
+    include('./Models/Shop.Model.php');
     include('./Validator.php');
 
     class ShopController
@@ -14,16 +14,21 @@ if (isset($_POST['action'])) {
             $shop_phone = htmlspecialchars($_POST['shop_phone']);
             $shop_email = htmlspecialchars($_POST['shop_email']);
             $shop_brand = htmlspecialchars($_POST['shop_brand']);
-           
-            $shopModel = new ShopModel();
-            $shopModel->createShop([
-                $shop_id,
-                $shop_owner,
-                $shop_brand,
-                $shop_phone,
-                $shop_email
-               
-            ]);
+
+            try {
+                $shopModel = new ShopModel();
+                $shopModel->createNewShop([
+                    $shop_id, 
+                    $shop_owner, $shop_phone, $shop_email,
+                    $shop_brand,
+                   
+                   
+
+                ]);
+                echo json_encode(["status" => "failure", "message" => "resussie produi"]);
+            } catch (\Throwable $th) {
+                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!" . $th]);
+            }
         }
 
         static function getMyShopById()
@@ -44,7 +49,7 @@ if (isset($_POST['action'])) {
         static function getAllUsersShops()
         {
             $shopModel = new ShopModel();
-            $data = $shopModel->getAllShopAdmin();
+            $data = $shopModel->getAllShopAdmin()->fetchAll();
             echo json_encode(["status" => "success", "data" => $data]);
         }
         static function updateShop()
@@ -80,8 +85,6 @@ if (isset($_POST['action'])) {
             $shopModel = new ShopModel();
             $shop_id = htmlspecialchars($_POST['shop_id']);
             $shop_password = htmlspecialchars($_POST['shop_password']);
-
-
             try {
                 $shopModel->updatePassword([
                     $shop_password,

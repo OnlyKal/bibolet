@@ -5,7 +5,7 @@ include './Config/schema.php';
 
 class ShopModel extends Queries
 {
-    public function createShop(array $args)
+    public function createNewShop(array $args)
     {
         Queries::addData(
             Schema::SHOP['tb'],

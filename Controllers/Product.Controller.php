@@ -2,7 +2,7 @@
 
 
 if (isset($_POST['action'])) {
-    include('../Models/Product.Model.php');
+    include('./Models/Product.Model.php');
     include('./Validator.php');
 
     class ProductController
@@ -18,8 +18,8 @@ if (isset($_POST['action'])) {
             $product_comment = htmlspecialchars($_POST['product_comment']);
 
             try {
-                $shopModel = new ShopModel();
-                $shopModel->createShop([
+                $productModel = new ProductModel();
+                $productModel->createProduct([
 
                     $product_id,
                     $product_name,
@@ -29,8 +29,10 @@ if (isset($_POST['action'])) {
                     $product_img,
                     $product_comment
                 ]);
+                echo json_encode(["status" => "failure", "message" => "resussie produi"]);
+          
             } catch (\Throwable $th) {
-                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
+                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!".$th]);
             }
         }
 
