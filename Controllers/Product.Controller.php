@@ -108,6 +108,22 @@ if (isset($_POST['action'])) {
                 echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
             }
         }
+        static function updateProductName()
+        {
+            $productModel = new ProductModel();
+            $product_id = htmlspecialchars($_POST['product_id']);
+            $product_name = htmlspecialchars($_POST['product_name']);
+
+            try {
+                $productModel->updateName([
+                    $product_name,
+                    $product_id
+                ]);
+                echo json_encode(["status" => "success", "message" => "Mis a jour reussi"]);
+            } catch (\Throwable $th) {
+                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
+            }
+        }
         
     
         static function action()
@@ -140,4 +156,5 @@ if (isset($_POST['action'])) {
             }
         }
     }
+    ProductController::action();
 }

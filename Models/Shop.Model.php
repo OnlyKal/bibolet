@@ -80,6 +80,14 @@ class ShopModel extends Queries
             Schema::SHOP['id'],
             $args
         );
+    }public function updateBrand(array $args)
+    {
+        Queries::updateData(
+            Schema::SHOP['tb'],
+            [Schema::SHOP['brand']],
+            Schema::SHOP['id'],
+            $args
+        );
     }
     public function setCover(array $args)
     {

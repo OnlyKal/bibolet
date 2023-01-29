@@ -59,7 +59,15 @@ class ProductModel extends Queries
             $args
         );
     }
-
+    public function updateName(array $args)
+    {
+        Queries::updateData(
+            Schema::PRODUCT['tb'],
+            [Schema::PRODUCT['name']],
+            Schema::PRODUCT['id'],
+            $args
+        );
+    }
     public function  getAllProducts()
     {
         $query = Queries::myQuery('SELECT * FROM tProduct WHERE tProduct.isValid=?;', [1]);

@@ -122,6 +122,22 @@ if (isset($_POST['action'])) {
                 echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
             }
         }
+        static function updateBrandShop()
+        {
+            $shopModel = new ShopModel();
+            $shop_id = htmlspecialchars($_POST['shop_id']);
+            $shop_brand = htmlspecialchars($_POST['shop_brand']);
+
+            try {
+                $shopModel->updateBrand([
+                    $shop_brand,
+                    $shop_id
+                ]);
+                echo json_encode(["status" => "success", "message" => "Mis a jour reussi"]);
+            } catch (\Throwable $th) {
+                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
+            }
+        }
 
         static function action()
         {
@@ -156,4 +172,5 @@ if (isset($_POST['action'])) {
             }
         }
     }
+    ShopController::action();
 }

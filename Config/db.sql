@@ -12,6 +12,7 @@ CREATE TABLE
         shopPassword varchar(50) NULL,
         shopFullAddress varchar(50) NULL,
         shopSlogan varchar(50) NULL,
+        shopBrand varchar(50) NULL,
         shopLat varchar(50) NULL,
         shopLng varchar(50) NULL,
         isSeller TINYINT(1) NOT NULL DEFAULT 0,

@@ -17,6 +17,7 @@ class Schema
         "password" => "shopPassword",
         "address" => "shopFullAddress",
         "slogan" => "shopSlogan",
+        "brand" => "shopBrand",
         "latitude" => "shopLat",
         "longitude" => "shopLng",
         "isSeller" => "isSeller",
