@@ -56,39 +56,5 @@ class CommandModel extends Queries
         $query = Queries::myQuery('SELECT tproduct.*,tcommand.* FROM tcommand INNER JOIN tproduct ON tproduct.prodId=tcommand.prodId;');
         return $query;
     }
-    public function  getCommadDateShop()
-    {
-        $query = Queries::myQuery('SELECT tproduct.*,tcommand.* FROM tcommand INNER JOIN tproduct ON tproduct.prodId=tcommand.prodId WHERE tcommand.shopId=?;', [1]);
-        return $query;
-    }
-    public function  getIsConfirmedDate()
-    {
-        $query = Queries::myQuery('SELECT tproduct.*,tcommand.* FROM tcommand INNER JOIN tproduct ON tproduct.prodId=tcommand.prodId WHERE tcommand.iscmdConfirmed=?;', [1]);
-        return $query;
-    }
-    public function  getIsNotConfirmedDate()
-    {
-        $query = Queries::myQuery('SELECT tproduct.*,tcommand.* FROM tcommand INNER JOIN tproduct ON tproduct.prodId=tcommand.prodId WHERE tcommand.iscmdConfirmed=?;', [0]);
-        return $query;
-    }
-    public function  getIsPaidDate()
-    {
-        $query = Queries::myQuery('SELECT tproduct.*,tcommand.* FROM tcommand INNER JOIN tproduct ON tproduct.prodId=tcommand.prodId WHERE tcommand.isPaid=?;', [1]);
-        return $query;
-    }
-    public function  getIsNotPaidDate()
-    {
-        $query = Queries::myQuery('SELECT tproduct.*,tcommand.* FROM tcommand INNER JOIN tproduct ON tproduct.prodId=tcommand.prodId WHERE tcommand.isPaid=?;', [0]);
-        return $query;
-    }
-    public function  getIsReceived()
-    {
-        $query = Queries::myQuery('SELECT tproduct.*,tcommand.* FROM tcommand INNER JOIN tproduct ON tproduct.prodId=tcommand.prodId WHERE tcommand.isCustormerReceived=?;', [1]);
-        return $query;
-    }
-    public function  getIsNotReceived()
-    {
-        $query = Queries::myQuery('SELECT tproduct.*,tcommand.* FROM tcommand INNER JOIN tproduct ON tproduct.prodId=tcommand.prodId WHERE tcommand.isCustormerReceived=?;', [0]);
-        return $query;
-    }
+   
 }
