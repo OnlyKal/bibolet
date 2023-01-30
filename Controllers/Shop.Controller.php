@@ -75,9 +75,9 @@ if (isset($_POST['action'])) {
                     $shop_lng,
                     $shop_id
                 ]);
-                echo json_encode(["status" => "success", "message" => "Mis a jour reussi"]);
+                echo json_encode(["status" => "success", "message" => "Shop account is activated", "data" => null]);
             } catch (\Throwable $th) {
-                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
+                echo json_encode(["status" => "failure", "message" => "Error while adding shop account", "data" => null]);
             }
         }
         static function updateShopPassword()
@@ -90,9 +90,9 @@ if (isset($_POST['action'])) {
                     $shop_password,
                     $shop_id
                 ]);
-                echo json_encode(["status" => "success", "message" => "Mis a jour reussi"]);
+                echo json_encode(["status" => "success", "message" => "Shop password is updated", "data" => null]);
             } catch (\Throwable $th) {
-                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
+                echo json_encode(["status" => "failure", "message" => "Error while updating shop password", "data" => null]);
             }
         }
         static function updateISseller()
@@ -106,9 +106,9 @@ if (isset($_POST['action'])) {
                     $isSeller,
                     $shop_id
                 ]);
-                echo json_encode(["status" => "success", "message" => "Mis a jour reussi"]);
+                echo json_encode(["status" => "success", "message" => "Shop brand is updated", "data" => null]);
             } catch (\Throwable $th) {
-                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
+                echo json_encode(["status" => "failure", "message" => "Error while updating shop brand", "data" => null]);
             }
         }
         static function updateCover()
@@ -122,9 +122,9 @@ if (isset($_POST['action'])) {
                     $shop_cover,
                     $shop_id
                 ]);
-                echo json_encode(["status" => "success", "message" => "Mis a jour reussi"]);
+                echo json_encode(["status" => "success", "message" => "Shop cover image is updated", "data" => null]);
             } catch (\Throwable $th) {
-                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
+                echo json_encode(["status" => "failure", "message" => "Error while updating shop cover image", "data" => null]);
             }
         }
         static function updateBrandShop()
@@ -138,9 +138,9 @@ if (isset($_POST['action'])) {
                     $shop_brand,
                     $shop_id
                 ]);
-                echo json_encode(["status" => "success", "message" => "Mis a jour reussi"]);
+                echo json_encode(["status" => "success", "message" => "Shop brand is updated", "data" => null]);
             } catch (\Throwable $th) {
-                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
+                echo json_encode(["status" => "failure", "message" => "Error while updating shop brand", "data" => null]);
             }
         }
 
