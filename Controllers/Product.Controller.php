@@ -29,24 +29,31 @@ if (isset($_POST['action'])) {
                     $product_img,
                     $product_comment
                 ]);
-                echo json_encode(["status" => "failure", "message" => "resussie produi"]);
-          
+                echo json_encode(["status" => "success", "message" => "Your product is successfully added", "data" => null]);
             } catch (\Throwable $th) {
-                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!".$th]);
+                echo json_encode(["status" => "failure", "message" => "Error while adding product", "data" => null]);
             }
         }
 
         static function getValidProducts()
         {
-            $productModel = new ProductModel();
-            $data = $productModel->getAllProducts()->fetchAll();
-            echo json_encode(["status" => "success", "data" => $data]);
+            try {
+                $productModel = new ProductModel();
+                $data = $productModel->getAllProducts()->fetchAll();
+                echo json_encode(["status" => "success", "message" => null, "data" => $data]);
+            } catch (\Throwable $th) {
+                echo json_encode(["status" => "failure", "message" => "Error while fetching products", "data" => null]);
+            }
         }
         static function getAllProducts()
         {
-            $productModel = new ProductModel();
-            $data = $productModel->getAllProductsAdmin()->fetchAll();
-            echo json_encode(["status" => "success", "data" => $data]);
+            try {
+                $productModel = new ProductModel();
+                $data = $productModel->getAllProductsAdmin()->fetchAll();
+                echo json_encode(["status" => "success", "message" => null, "data" => $data]);
+            } catch (\Throwable $th) {
+                echo json_encode(["status" => "failure", "message" => "Error while fetching products", "data" => null]);
+            }
         }
 
         static function updatePrice()
@@ -60,9 +67,9 @@ if (isset($_POST['action'])) {
                     $product_price,
                     $product_id
                 ]);
-                echo json_encode(["status" => "success", "message" => "Mis a jour reussi"]);
+                echo json_encode(["status" => "success", "message" => "Price is updated", "data" => null]);
             } catch (\Throwable $th) {
-                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
+                echo json_encode(["status" => "failure", "message" => "Error while updating product price", "data" => null]);
             }
         }
         static function updateIsvalid()
@@ -76,9 +83,9 @@ if (isset($_POST['action'])) {
                     $isValid,
                     $product_id
                 ]);
-                echo json_encode(["status" => "success", "message" => "Mis a jour reussi"]);
+                echo json_encode(["status" => "success", "message" => "Product is validated", "data" => null]);
             } catch (\Throwable $th) {
-                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
+                echo json_encode(["status" => "failure", "message" => "Error while validating product", "data" => null]);
             }
         }
         static function updateIsOffer()
@@ -92,9 +99,9 @@ if (isset($_POST['action'])) {
                     $isOffer,
                     $product_id
                 ]);
-                echo json_encode(["status" => "success", "message" => "Mis a jour reussi"]);
+                echo json_encode(["status" => "success", "message" => "Offer status is activated", "data" => null]);
             } catch (\Throwable $th) {
-                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
+                echo json_encode(["status" => "failure", "message" => "Error while activating offer price", "data" => null]);
             }
         }
         static function updateOfferPrice()
@@ -108,9 +115,9 @@ if (isset($_POST['action'])) {
                     $offer_price,
                     $product_id
                 ]);
-                echo json_encode(["status" => "success", "message" => "Mis a jour reussi"]);
+                echo json_encode(["status" => "success", "message" => "Offer price is updated", "data" => null]);
             } catch (\Throwable $th) {
-                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
+                echo json_encode(["status" => "failure", "message" => "Error while updating offer price", "data" => null]);
             }
         }
         static function updateProductName()
@@ -124,9 +131,9 @@ if (isset($_POST['action'])) {
                     $product_name,
                     $product_id
                 ]);
-                echo json_encode(["status" => "success", "message" => "Mis a jour reussi"]);
+                echo json_encode(["status" => "success", "message" => "Product name is updated", "data" => null]);
             } catch (\Throwable $th) {
-                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
+                echo json_encode(["status" => "failure", "message" => "Error while updating product name", "data" => null]);
             }
         }
 
