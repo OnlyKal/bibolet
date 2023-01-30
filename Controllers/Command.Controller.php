@@ -30,8 +30,9 @@ if (isset($_POST['action'])) {
                     $cmd_delLat,
                     $cmd_delLng
                 ]);
+                echo json_encode(["status" => "success", "message" => "Your order is successfully created", "data" => null]);
             } catch (\Throwable $th) {
-                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
+                echo json_encode(["status" => "failure", "message" => "Error while creating order", "data" => null]);
             }
         }
 
@@ -46,9 +47,9 @@ if (isset($_POST['action'])) {
                     $isConfirmed,
                     $cmd_id
                 ]);
-                echo json_encode(["status" => "success", "message" => "Mis a jour reussi"]);
+                echo json_encode(["status" => "success", "message" => $isConfirmed == 1 ? "Your order is confirmed" : "Your order is unconfirmed", "data" => null]);
             } catch (\Throwable $th) {
-                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
+                echo json_encode(["status" => "failure", "message" => "Error while confiming order", "data" => null]);
             }
         }
         static function setPaidOrder()
@@ -62,9 +63,9 @@ if (isset($_POST['action'])) {
                     $isPaid,
                     $cmd_id
                 ]);
-                echo json_encode(["status" => "success", "message" => "Mis a jour reussi"]);
+                echo json_encode(["status" => "success", "message" => $isPaid == 1 ? "Payment confirmed" : "Payment unconfirmed", "data" => null]);
             } catch (\Throwable $th) {
-                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
+                echo json_encode(["status" => "failure", "message" => "Error while making payement", "data" => null]);
             }
         }
         static function setReceived()
@@ -78,17 +79,21 @@ if (isset($_POST['action'])) {
                     $isReceived,
                     $cmd_id
                 ]);
-                echo json_encode(["status" => "success", "message" => "Mis a jour reussi"]);
+                echo json_encode(["status" => "success", "message" => $isReceived == 1 ? "Order delivring confirmed" : "Order delivring is unconfirmed", "data" => null]);
             } catch (\Throwable $th) {
-                echo json_encode(["status" => "failure", "message" => "Quelque chose s'est mal passée....!"]);
+                echo json_encode(["status" => "failure", "message" => "Error while confirming delivery", "data" => null]);
             }
         }
 
         static function getAllOrders()
         {
-            $cmdModel = new CommandModel();
-            $data = $cmdModel->getCommadDate()->fetchAll();
-            echo json_encode(["status" => "success", "data" => $data]);
+            try {
+                $cmdModel = new CommandModel();
+                $data = $cmdModel->getCommadDate()->fetchAll();
+                echo json_encode(["status" => "success", "message" => null, "data" => $data]);
+            } catch (\Throwable $th) {
+                echo json_encode(["status" => "failure", "message" => "Error while fetching all orders", "data" => null]);
+            }
         }
         static function action()
         {

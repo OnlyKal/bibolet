@@ -22,9 +22,9 @@ if (isset($_POST['action'])) {
                     $category_id,
                     $category_name
                 ]);
-                echo json_encode(["status" => "success", "message" => "Mis a jour reussi", "data" => null]);
+                echo json_encode(["status" => "success", "message" => "One categoy is added", "data" => null]);
             } catch (\Throwable $th) {
-                echo json_encode(["status" => "failure", "message" => "Page routye introuveble", "data" => null]);
+                echo json_encode(["status" => "failure", "message" => "Error while creating category", "data" => null]);
             }
         }
 
