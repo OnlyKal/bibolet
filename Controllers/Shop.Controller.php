@@ -20,10 +20,7 @@ if (isset($_POST['action'])) {
                 $shopModel->createNewShop([
                     $shop_id, 
                     $shop_owner, $shop_phone, $shop_email,
-                    $shop_brand,
-                   
-                   
-
+                    $shop_brand,             
                 ]);
                 echo json_encode(["status" => "failure", "message" => "resussie produi"]);
             } catch (\Throwable $th) {
@@ -116,7 +113,7 @@ if (isset($_POST['action'])) {
             $shopModel = new ShopModel();
             $shop_id = htmlspecialchars($_POST['shop_id']);
             $shop_cover = htmlspecialchars($_POST['shop_cover']);
-
+            
             try {
                 $shopModel->setCover([
                     $shop_cover,
